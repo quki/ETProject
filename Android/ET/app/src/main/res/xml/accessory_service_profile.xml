@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <application name="ET">
+        <serviceProfile
+            name="et"
+            id="/favorie/et"
+            role="consumer"
+            serviceImpl="co.favorie.wearable.et.service.AccessoryService"
+            serviceLimit="any"
+            serviceTimeout="10"
+            version="1.0">
+            <supportedTransports>
+                <transport type="TRANSPORT_BT" />
+                <transport type="TRANSPORT_WIFI"/>
+            </supportedTransports>
+            <serviceChannel
+                dataRate="low"
+                id="101"
+                priority="high"
+                reliability="enable" />
+        </serviceProfile>
+    </application>
+</resources>
+
