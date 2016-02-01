@@ -3,19 +3,19 @@
     android:background = "@color/white"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingLeft = "50dp"
-    android:paddingRight = "50dp"
-    android:paddingTop = "50dp"
-    android:paddingBottom = "50dp"
+    android:paddingLeft = "100dp"
+    android:paddingRight = "100dp"
+    android:paddingTop = "100dp"
+    android:paddingBottom = "100dp"
     android:orientation = "vertical">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">x
         <Button
             android:id="@+id/toeic"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="30dp"
@@ -31,13 +31,13 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/opic"
             android:layout_marginTop="20dp"
             android:height ="60dp"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="30dp"
@@ -51,13 +51,13 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">x
         <Button
             android:id="@+id/toefl"
             android:layout_marginTop="20dp"
             android:height ="60dp"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="30dp"
@@ -71,13 +71,13 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">x
         <Button
             android:id="@+id/btnSave"
             android:layout_marginTop="20dp"
             android:height ="60dp"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="30dp"
@@ -90,50 +90,6 @@
             android:textSize="18dp" />
     </LinearLayout>
 
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-     >
-
-
-    <Button
-        android:id="@+id/requestBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="REQUEST" />
-
-    <Button
-        android:id="@+id/sendBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/requestBtn"
-        android:text="SEND" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/statusTxtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="제대로 값이 넘어갔나?"
-            android:textSize="20dp" />
-        >
-
-
-    </LinearLayout>
 
 
 </LinearLayout>
