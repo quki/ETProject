@@ -19,6 +19,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".category.toeicActivity"
+            android:label="토 익"
+            >
+    </activity>
+        <activity
+            android:name=".category.opicActivity"
+            android:label="오 픽"
+            >
+        </activity>
+        <activity
+            android:name=".category.toeflActivity"
+            android:label="토 플"
+            >
+        </activity>
         <service android:name=".service.AccessoryService" />
         <meta-data
             android:name="AccessoryServicesLocation"

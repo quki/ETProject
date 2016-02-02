@@ -1,120 +1,96 @@
-package co.favorie.wearable.et;
+package co.favorie.wearable.et.category;
 
-import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.bluetooth.BluetoothAdapter;
 import android.widget.Toast;
 
 import java.io.Serializable;
 
+import co.favorie.wearable.et.MainActivity;
+import co.favorie.wearable.et.R;
 import co.favorie.wearable.et.action.ConnectAction;
 import co.favorie.wearable.et.bluetooth.BluetoothConfig;
 import co.favorie.wearable.et.bluetooth.BluetoothConnection;
-import co.favorie.wearable.et.category.opicActivity;
-import co.favorie.wearable.et.category.toeflActivity;
-import co.favorie.wearable.et.category.toeicActivity;
 import co.favorie.wearable.et.service.AccessoryService;
 
-public class MainActivity extends AppCompatActivity implements BluetoothConnection{
-
+/**
+ * Created by Yohan on 2016-02-01.
+ */
+public class toeicActivity extends AppCompatActivity  implements BluetoothConnection {
+    private Button settingButton;
+    private Button backButton;
+    private EditText lc_text;
+    private EditText part5_text;
+    private EditText part6_text;
+    private EditText part7_text;
     public  AccessoryService mAccessoryService = new AccessoryService();
     private boolean isBound;
-    private Button requestBtn, sendBtn;
-    private Button toeicBtn,toeflBtn,opicBtn;
-    private TextView statusTxtView;
+    private Button BluetoothButton;
 
-
-
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Log.d("tag", "yoyo5");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        Log.d("tag", "yoyo6");
+        setContentView(R.layout.layout_toeic);
         initBluetoothConnection();
         bindAccessoryService();
-        Log.d("tag", "yoyo1");
-        toeicBtn = (Button)findViewById(R.id.toeic);
-        toeflBtn = (Button)findViewById(R.id.toefl);
-        opicBtn = (Button)findViewById(R.id.opic);
-        requestBtn = (Button) findViewById(R.id.requestBtn);
-        sendBtn = (Button) findViewById(R.id.sendBtn);
-        statusTxtView = (TextView) findViewById(R.id.statusTxtView);
-        sendBtn.setEnabled(false);
-        Log.d("tag", "yoyo2");
-        requestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("tag", "yoyo3");
-                startConnection();
+        Log.d("tag", "yoyo7");
+        settingButton= (Button)findViewById(R.id.submit_toeic);
+        BluetoothButton= (Button)findViewById(R.id.bluetooth);
+        backButton=(Button)findViewById(R.id.back_toeic);
+        lc_text = (EditText)findViewById(R.id.toeic_lc);
+        part5_text = (EditText)findViewById(R.id.toeic_part5);
+        part6_text = (EditText)findViewById(R.id.toeic_part6);
+        part7_text = (EditText)findViewById(R.id.toeic_part7);
 
-            }
-        });
-        sendBtn.setOnClickListener(new View.OnClickListener(){
+       // if(getIntent().hasExtra("wow")) {
+
+      //  }
+
+
+
+        settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String data =  "Hello GearS2";
+                String data =  lc_text.getText().toString();
                 sendDataToService(data);
             }
         });
 
-        toeicBtn.setOnClickListener(new View.OnClickListener() {
+
+        BluetoothButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag","yoyo3");
+                startConnection();
+
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Log.d("tag","yoyo4");
+                Log.d("tag", "yoyo4");
 
-                Intent intent = new Intent(MainActivity.this,
-                        toeicActivity.class);
-                Log.d("tag", "yoyo first finished");
-
-
+                Intent intent = new Intent(toeicActivity.this,
+                        MainActivity.class);
                 startActivity(intent);
             }
         });
 
-
-        opicBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.d("tag","yoyo4");
-
-                Intent intent = new Intent(MainActivity.this,
-                        opicActivity.class);
-                Log.d("tag", "yoyo first finished");
-
-
-                startActivity(intent);
-            }
-        });
-
-        toeflBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.d("tag","yoyo4");
-
-                Intent intent = new Intent(MainActivity.this,
-                        toeflActivity.class);
-                Log.d("tag", "yoyo first finished");
-
-
-                startActivity(intent);
-            }
-        });
 
     }
+
 
     @Override
     protected void onDestroy() {
@@ -213,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        sendBtn.setEnabled(true);
+                        settingButton.setEnabled(true);
                     }
                 });
             }
@@ -230,13 +206,14 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
 
             @Override
             public void onSuccessTransfer(final String data) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        statusTxtView.setText(data);
-                    }
-                });
+                //runOnUiThread(new Runnable() {
+                  //  @Override
+                //    public void run() {
+                 //       statusTxtView.setText(data);
+                 //   }
+              //  });
             }
         };
     }
+
 }
