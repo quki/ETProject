@@ -1,0 +1,192 @@
+button {
+    font-family: Arial;
+}
+
+.digit {
+    background-position: center;
+    font-size: 18px;
+    color: #7eb5d7;
+}
+.digit.colon{
+    background-size: contain;
+    background-position: center;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+}
+
+.ui-header,
+.ui-btn {
+    background-color: transparent;
+}
+
+#stopwatch-wrapper-frame {
+    width: auto;
+    height: auto;
+}
+
+.ui-header {
+    height: 70px;
+}
+
+#stopwatch-page .ui-header {
+    display: none;
+}
+
+#stopwatch-wrapper {
+	text-align:center;
+    padding-bottom: 8px;
+    margin-top: 11px;
+    height: 25px;
+    line-height: 25px;
+}
+
+#stopwatch-content-timer {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+}
+
+.ui-page #stopwatch-content-timer.ui-content {
+    position: relative;
+    height: 360px !important;
+}
+
+.progress-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#path-canvas {
+   -webkit-mask-image: url('../img/g_stopwatch/b_running_progress_bg_masking.png');
+}
+
+.main-control {
+    position: fixed;
+    top: 0;
+    padding-top: 113px;
+    height: 100%;
+    width: 180px;
+    left: 90px;
+}
+
+.main-control button {
+    font-size: 26px;
+}
+
+.touch-indicator {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+}
+
+.touch-indicator:before {
+    content: "";
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    position: absolute;
+    z-index: -1;
+    margin-left: -90px;
+    margin-top: -90px;
+    width: 180px;
+    height: 180px;
+    opacity: 0;
+    background-color: rgb(70, 70, 70);
+}
+
+.touch-indicator.active:before {
+    -webkit-animation: button-pressed .3s 0s 1 linear;
+}
+
+@-webkit-keyframes button-pressed {
+    0% {
+        background-color: rgb(70, 70, 70);
+        margin-left: -90px;
+        margin-top: -90px;
+        width: 180px;
+        height: 180px;
+        opacity: 1;
+    }
+    100% {
+        background-color: rgb(38, 38, 38);
+        margin-left: -108px;
+        margin-top: -108px;
+        width: 216px;
+        height: 216px;
+        opacity: 0;
+    }
+}
+
+button.ui-btn.hidden {
+    display: none;
+}
+
+.btn-play, .btn-pause, .stopwatch-btn {
+    padding: 0;
+}
+
+.btn-play, .btn-restart {
+    color: #7eb5d7;
+}
+
+.btn-pause {
+    color: rgb(211, 60, 60);
+    position: relative;
+}
+
+.btn-stop {
+    color: rgb(211, 60, 60);
+    margin-top: 50px;
+}
+
+.btn-pause:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 96px;
+    width: 100%;
+}
+
+#stopwatch-wrapper-frame div {
+	display:inline;
+}
+
+.del {
+    display: none;
+}
+
+a.ui-btn:active:hover, .ui-btn:enabled:active:hover {
+    background-color: transparent !important;
+}
+
+.ui-page.ui-scroll-on .ui-content {
+    margin-top: 0;
+}
+
+#stopwatch-content-timer {
+    transition: -webkit-transform .2s ease;
+}
+
+#stopwatch-content-timer.zoom-out {
+    -webkit-transform: scale(.9);
+}
+
+#stopwatch-page {
+    display: block;
+}
+
+.ui-circle-progress {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+}
+#test-title{
+	font-size: 20px;
+}
