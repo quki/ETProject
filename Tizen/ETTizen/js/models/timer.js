@@ -137,11 +137,11 @@ define({
              * @return {number} Time elapsed on the timer.
              */
             getTimeElapsed: function getTimeElapsed() {
-            	var timeSet = json[gIndex].time;
+            	var timeSet = examList[gIndex].time;
                 if (this.status === 'running') {
                 	var timeElapsed = timeSet - Date.now() + this.startTime;
                 	if(timeElapsed<0)
-                		navigator.vibrate(300);
+                		navigator.vibrate([500,30,500,30]);
                     return timeElapsed;
                 }
                 if (this.status === 'paused') {

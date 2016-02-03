@@ -1,28 +1,43 @@
+@font-face{
+    font-family: "My-Font";
+    /* src: url('../assets/font/NanumGothicExtraBold.ttf'); */
+    src: url('../assets/font/10X10Bold.ttf');
+}
+body{
+	font-family:My-Font;
+	font-style:italic;
+}
+
 button {
-    font-family: Arial;
+	
+    font-family: My-Font;
+    font-style:italic;
 }
 
 .digit {
-    background-position: center;
-    font-size: 18px;
-    color: #7eb5d7;
-}
-.digit.colon{
+	width: 15px;
     background-size: contain;
     background-position: center;
-    text-align: center;
-    font-size: 13px;
+	font-family : My-Font;
+	font-style:italic;
+    font-size: 50px;
+    color: #b2e2f0;
+}
+.digit.colon{
+    font-size: 17px;
     color: #fff;
+    width: 17px;
 }
 
 .ui-header,
 .ui-btn {
     background-color: transparent;
 }
-
+/*제목과 카운트 사이*/
 #stopwatch-wrapper-frame {
+	padding: 0;
+    margin: 2px auto;	
     width: auto;
-    height: auto;
 }
 
 .ui-header {
@@ -33,12 +48,11 @@ button {
     display: none;
 }
 
+/* 제목+카운트 */
 #stopwatch-wrapper {
 	text-align:center;
-    padding-bottom: 8px;
-    margin-top: 11px;
-    height: 25px;
-    line-height: 25px;
+    padding-bottom: 0px;
+    margin-top: 35px;     
 }
 
 #stopwatch-content-timer {
@@ -65,17 +79,18 @@ button {
    -webkit-mask-image: url('../img/g_stopwatch/b_running_progress_bg_masking.png');
 }
 
+/* 메인 view 버튼+제목+카운트 */
 .main-control {
     position: fixed;
     top: 0;
-    padding-top: 113px;
+    padding-top: 70px;
     height: 100%;
     width: 180px;
     left: 90px;
 }
 
 .main-control button {
-    font-size: 26px;
+    font-size: 25px;
 }
 
 .touch-indicator {
@@ -135,13 +150,13 @@ button.ui-btn.hidden {
 }
 
 .btn-pause {
-    color: rgb(211, 60, 60);
+    color: #ff9494;
     position: relative;
 }
 
 .btn-stop {
-    color: rgb(211, 60, 60);
-    margin-top: 50px;
+    color: #ff9494;
+    margin-top: 55px;
 }
 
 .btn-pause:before {
@@ -154,7 +169,9 @@ button.ui-btn.hidden {
 }
 
 #stopwatch-wrapper-frame div {
-	display:inline;
+	display:inline-block;
+	margin: 0 6px 0 0;
+	padding: 0;
 }
 
 .del {
@@ -187,6 +204,8 @@ a.ui-btn:active:hover, .ui-btn:enabled:active:hover {
 	left: 50%;
 	-webkit-transform: translate3d(-50%, -50%, 0);
 }
-#test-title{
-	font-size: 20px;
+#exam-title{
+	font-family: My-Font;
+	font-size: 25px;
+	color: #7eb5d7;
 }
