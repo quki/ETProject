@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:background="@color/number_three"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:paddingLeft="70dp"
+            android:text="T O E I C"
+            android:textSize="25dp"
+
+            />
+
+        <TextView
+            android:id="@+id/part_display_toeic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:text="part 5"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/minuite_display_toeic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="95dp"
+                android:background="@color/number_two"
+                android:textAlignment="center"
+                android:hint="45"
+                android:textSize="20dp"
+                android:gravity="center"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="3dp"
+                android:text="min"
+                android:textSize="20dp" />
+
+
+            <TextView
+                android:id="@+id/second_display_toeic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="40dp"
+                android:gravity="center"
+                android:hint ="45"
+                android:textSize="20dp"
+                android:background="@color/number_two"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="3dp"
+                android:text="sec"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="left..."
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
+            />
+        <Button
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/number_six"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="timerlist"
+            android:textSize="20dp"
+            />
+        <Button
+            android:id="@+id/toeic_display_part5"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/number_six"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text=" >> TOEIC part 5 >>"
+            android:textSize="20dp"
+            />
+        <Button
+            android:id="@+id/toeic_display_part6"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/number_six"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text=" >> TOEIC part 6 >>"
+            android:textSize="20dp"
+            />
+        <Button
+            android:id="@+id/toeic_display_part7"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/number_six"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text=" >> TOEIC part 7 >>"
+            android:textSize="20dp"
+            />
+
+    </LinearLayout>
+</LinearLayout>

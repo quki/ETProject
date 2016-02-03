@@ -6,5 +6,11 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#f5f5f0</color>
-    <color name="real_grey">#b3b3b3</color>
+    <color name="number_one">#f2f9fa</color>
+    <color name="number_two">#ddf2fa</color>
+    <color name="number_three">#b2e2f0</color>
+    <color name="number_four">#7eb5d7</color>
+    <color name="number_five">#747185</color>
+    <color name="number_six">#ded9e0</color>
+    <color name="number_seven">#440062</color>
 </resources>

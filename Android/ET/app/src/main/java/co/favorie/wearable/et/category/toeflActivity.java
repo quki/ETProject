@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import co.favorie.wearable.et.MainActivity;
@@ -23,15 +26,17 @@ import co.favorie.wearable.et.service.AccessoryService;
  * Created by Yohan on 2016-02-01.
  */
 public class toeflActivity extends AppCompatActivity {
-    private Button settingButton;
-    private Button backButton;
-    private EditText toefl_reading;
-    private EditText toefl_writing;
-    private EditText toefl_listening;
-    private EditText toefl_speaking;
+    private ImageButton settingButton;
+    private ImageButton startButton;
+    private Button toefl_reading;
+    private int reading_selector,speaking_selector,writing_selector,total_selector,independent_selector =0;
+    private Button toefl_writing;
+    private Button toefl_listening;
+    private Button toefl_speaking;
+    private Button independent,total;
+    private Switch bluetooth_toefl;
     public AccessoryService mAccessoryService = new AccessoryService();
     private boolean isBound;
-    private Button BluetoothButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("tag", "yoyo5");
@@ -41,21 +46,15 @@ public class toeflActivity extends AppCompatActivity {
         initBluetoothConnection();
         bindAccessoryService();
         Log.d("tag", "yoyo7");
-        settingButton= (Button)findViewById(R.id.submit_toefl);
-        BluetoothButton= (Button)findViewById(R.id.bluetooth_toefl);
-        backButton=(Button)findViewById(R.id.back_toefl);
-        toefl_reading = (EditText)findViewById(R.id.toefl_reading);
-        toefl_writing= (EditText)findViewById(R.id.toefl_writing);
-        toefl_listening = (EditText)findViewById(R.id.toefl_listening);
-        toefl_speaking = (EditText)findViewById(R.id.toefl_speaking);
-
-        // if(getIntent().hasExtra("wow")) {
-
-        //  }
-
-
-
-        settingButton.setOnClickListener(new View.OnClickListener() {
+        settingButton= (ImageButton)findViewById(R.id.toefl_setting);
+        toefl_reading = (Button)findViewById(R.id.toefl_reading);
+        toefl_writing= (Button)findViewById(R.id.toefl_writing);
+        toefl_speaking = (Button)findViewById(R.id.toefl_speaking);
+        bluetooth_toefl = (Switch)findViewById(R.id.bluetooth_toefl);
+        startButton = (ImageButton)findViewById(R.id.toefl_start);
+        independent = (Button)findViewById(R.id.toefl_indipendent);
+        total = (Button)findViewById(R.id.toefl_total);
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String data =  toefl_reading.getText().toString();
@@ -63,31 +62,106 @@ public class toeflActivity extends AppCompatActivity {
             }
         });
 
+        settingButton.setOnClickListener(new View.OnClickListener() {
 
-        BluetoothButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tag","yoyo3");
+                Log.d("tag","yoyo4");
+
+                Intent intent = new Intent(toeflActivity.this,
+                        settingActivity.class);
+                Log.d("tag", "yoyo first finished");
+
+
+                startActivity(intent);
+            }
+        });
+
+        bluetooth_toefl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag", "yoyo3");
                 startConnection();
 
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
 
+        toefl_reading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tag", "yoyo4");
+                Log.d("tag", "reading");
 
-                Intent intent = new Intent(toeflActivity.this,
-                        MainActivity.class);
-                startActivity(intent);
+                reading_selector++;
+                if (reading_selector % 2 == 1) {
+                    selectOperation(toefl_reading);
+                } else {
+                    unselectedOperation(toefl_reading);
+                }
+            }
+        });
+        toefl_speaking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag","part6");
+                speaking_selector++;
+                if(speaking_selector%2==1) {
+                    selectOperation(toefl_speaking);
+                }else{
+                    unselectedOperation(toefl_speaking);
+                }
+            }
+        });
+        toefl_writing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag","part7");
+                writing_selector++;
+                if(writing_selector%2==1) {
+                    selectOperation(toefl_writing);
+                }else{
+                    unselectedOperation(toefl_writing);
+                }
+
+            }
+        });
+        total.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag", "part7");
+                total_selector++;
+                if (total_selector % 2 == 1) {
+                    selectOperation(total);
+                } else {
+                    unselectedOperation(total);
+                }
+
+            }
+        });
+        independent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag", "part7");
+                independent_selector++;
+                if (independent_selector % 2 == 1) {
+                    selectOperation(independent);
+                } else {
+                    unselectedOperation(independent);
+                }
+
             }
         });
 
 
     }
 
+    public void selectOperation(Button selectedButton) {
+        selectedButton.setBackgroundColor(Color.parseColor("#B2E2F0"));
+
+    }
+    public void unselectedOperation(Button selectedButton){
+        selectedButton.setBackgroundColor(Color.parseColor("#ddf2fa"));
+    }
 
     @Override
     protected void onDestroy() {

@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/number_one"
     android:orientation="vertical"
     android:paddingLeft="35dp"
     android:paddingRight="35dp"
-    android:paddingTop="10dp"
     android:weightSum="1">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="100dp">
 
-        <Switch
-            android:id="@+id/bluetooth_toefl"
-            android:layout_width="216dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:shadowColor="@color/number_three"
-            android:text="기어연결"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/number_seven" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/toeic_setting"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/rounded_button_setting"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/setting"
+            android:layout_marginLeft="20dp"
+
+            />
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -35,11 +40,12 @@
         android:paddingTop="10dp">
 
         <Button
+            android:id="@+id/toeic"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:width="200dp"
-            android:height="48dp"
+            android:height="35dp"
             android:background="@color/number_four"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
@@ -54,7 +60,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="5dp">
+        android:paddingTop="2dp">
 
         <Button
             android:layout_width="fill_parent"
@@ -66,73 +72,157 @@
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:textColor="@color/black"
-
+            android:textSize="15dp"
 
             />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="5dp">
+        android:background="@color/number_two"
+        android:paddingTop="5dp"
+        android:minHeight="40dp"
+        >
 
-        <Button
-            android:id="@+id/toefl_reading"
-            android:layout_width="fill_parent"
+
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:width="200dp"
-            android:height="68dp"
-            android:background="@drawable/btn_rounded_corner"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="Reading"
+            android:layout_marginLeft="20dp"
+            android:text = "Reading"
+            android:textSize ="16dp"
             android:textColor="@color/black"
-            android:textSize="22dp" />
+            />
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/number_three"
+            android:height="40dp"
+            android:width="40dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"
+            android:text = "min"
+            android:textSize ="15dp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/number_three"
+            android:height="40dp"
+            android:width="40dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"
+            android:text = "sec"
+            android:textSize ="15dp"
+            android:textColor="@color/black"
+            />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="5dp">
+        android:background="@color/number_two"
+        android:paddingTop="5dp"
+        android:minHeight="40dp"
 
-        <Button
-            android:id="@+id/toefl_speaking"
-            android:layout_width="fill_parent"
+        >
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:width="200dp"
-            android:height="68dp"
-            android:background="@drawable/btn_rounded_corner"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="Speaking"
+            android:layout_marginLeft="20dp"
+            android:text = "Speaking"
+            android:textSize ="16dp"
             android:textColor="@color/black"
-            android:textSize="22dp" />
+            />
+        <EditText
+            android:layout_marginLeft="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/number_three"
+            android:height="40dp"
+            android:width="40dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"
+            android:text = "min"
+            android:textSize ="15dp"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/number_three"
+            android:height="40dp"
+            android:width="40dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"
+            android:text = "sec"
+            android:textSize ="15dp"
+            android:textColor="@color/black"
+            />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="5dp">
+        android:background="@color/number_two"
+        android:paddingTop="5dp"
+        android:minHeight="35dp"
+        android:gravity="center"
+        >
 
-        <Button
-            android:id="@+id/toefl_writing"
-            android:layout_width="fill_parent"
+
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:width="200dp"
-            android:height="68dp"
-            android:background="@drawable/btn_rounded_corner"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="Writing"
+
+            android:text = "Writing"
+            android:textSize ="18dp"
             android:textColor="@color/black"
-            android:textSize="22dp" />
+            />
+
     </LinearLayout>
+
 
 
 
@@ -170,20 +260,20 @@
             android:textSize="20dp"
             android:layout_marginRight="2.5dp"
 
-            tools:ignore="RtlCompat" />
+            />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:orientation="horizontal">
 
 
         <ImageButton
-            android:id="@+id/toefl_setting"
+            android:id="@+id/toeic_start2"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
@@ -193,14 +283,14 @@
             android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/setting"
+            android:src="@drawable/back"
             android:layout_marginRight="20dp"
 
             />
 
 
         <ImageButton
-            android:id="@+id/toefl_start"
+            android:id="@+id/toeic_save"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:background="@drawable/rounded_button_setting"
@@ -209,10 +299,12 @@
             android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/start"
+            android:src="@drawable/save"
             android:layout_marginLeft="20dp"
 
             />
 
     </LinearLayout>
+
+
 </LinearLayout>
