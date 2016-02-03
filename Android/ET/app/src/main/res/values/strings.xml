@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ET</string>
+    <string name="toeic_part5"><font size ="20dp">First line!</font>\nSecond line!</string>
 </resources>

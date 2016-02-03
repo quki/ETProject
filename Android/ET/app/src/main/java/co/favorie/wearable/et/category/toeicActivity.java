@@ -3,6 +3,7 @@ package co.favorie.wearable.et.category;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.bluetooth.BluetoothAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import co.favorie.wearable.et.MainActivity;
 import co.favorie.wearable.et.R;
@@ -25,17 +36,26 @@ import co.favorie.wearable.et.service.AccessoryService;
 /**
  * Created by Yohan on 2016-02-01.
  */
+
+
+
 public class toeicActivity extends AppCompatActivity  implements BluetoothConnection {
-    private Button settingButton;
-    private Button backButton;
-    private EditText lc_text;
-    private EditText part5_text;
-    private EditText part6_text;
-    private EditText part7_text;
+    private ImageButton settingButton;
+   // private Button backButton;
+    private ImageButton startButton;
+    private TextView part5_text;
+    private TextView part6_text;
+    private TextView part7_text;
+    private Switch bluetooth_switch;
     public  AccessoryService mAccessoryService = new AccessoryService();
     private boolean isBound;
-    private Button BluetoothButton;
-
+    private int part5_selector=0;
+    private int part6_selector=0;
+    private int part7_selector=0;
+    private LinearLayout layout_part5;
+    private LinearLayout layout_part6;
+    private LinearLayout layout_part7;
+    private String JsonData="";
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("tag", "yoyo5");
         super.onCreate(savedInstanceState);
@@ -44,53 +64,149 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         initBluetoothConnection();
         bindAccessoryService();
         Log.d("tag", "yoyo7");
-        settingButton= (Button)findViewById(R.id.submit_toeic);
-        BluetoothButton= (Button)findViewById(R.id.bluetooth);
-        backButton=(Button)findViewById(R.id.back_toeic);
-        lc_text = (EditText)findViewById(R.id.toeic_lc);
-        part5_text = (EditText)findViewById(R.id.toeic_part5);
-        part6_text = (EditText)findViewById(R.id.toeic_part6);
-        part7_text = (EditText)findViewById(R.id.toeic_part7);
+        settingButton= (ImageButton)findViewById(R.id.toeic_setting);
+        part5_text = (TextView)findViewById(R.id.toeic_part5);
+        part6_text = (TextView)findViewById(R.id.toeic_part6);
+        part7_text = (TextView)findViewById(R.id.toeic_part7);
+        bluetooth_switch = (Switch)findViewById(R.id.bluetooth_toeic);
+        startButton = (ImageButton)findViewById(R.id.toeic_start_please);
+        layout_part5 = (LinearLayout)findViewById(R.id.layout_part5);
+        layout_part6 = (LinearLayout)findViewById(R.id.layout_part6);
+        layout_part7 = (LinearLayout)findViewById(R.id.layout_part7);
 
-       // if(getIntent().hasExtra("wow")) {
+        part5_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part5()+"min")));
+        part6_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part6()+"min")));
+        part7_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part7() + "min")));
 
-      //  }
+
+        JsonData = "[ {'title' : 'TOEIC PART5' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part5()*60*1000)  + "}," +
+                  " {'title' : 'TOEIC PART6' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part6()*60*1000)   + "},"  +
+                " {'title' : 'TOEIC PART7' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*1000)   + "}"  +
+                "]" ;
 
 
 
-        settingButton.setOnClickListener(new View.OnClickListener() {
+        JSONObject obj1 = new JSONObject();
+        JSONObject obj2 = new JSONObject();
+        JSONObject obj3 = new JSONObject();
+        final JSONArray jsonArray = new JSONArray();
+        try {
+            obj1.put("title","TOEIC PART5");
+            obj1.put("time", String.valueOf(Global_Variable.get_gloval_toeic_part5()*60*100));
+            jsonArray.put(obj1);
+            obj2.put("title","TOEIC PART6");
+            obj2.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part6()*60*100));
+            jsonArray.put(obj2);
+            obj3.put("title","TOEIC PART7");
+            obj3.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*100));
+            jsonArray.put(obj3);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+        layout_part5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String data =  lc_text.getText().toString();
-                sendDataToService(data);
+                Log.d("tag", "part5");
+
+                part5_selector++;
+                if (part5_selector % 2 == 1) {
+                    selectOperation(layout_part5);
+                    Global_Variable.set_global_toeic_part5();
+                } else {
+                    unselectedOperation(layout_part5);
+                    Global_Variable.set_global_toeic_part5();
+                }
+            }
+        });
+        layout_part6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag","part6");
+                part6_selector++;
+                if(part6_selector%2==1) {
+                    selectOperation(layout_part6);
+                    Global_Variable.set_global_toeic_part6();
+                }else{
+                    unselectedOperation(layout_part6);
+                    Global_Variable.set_global_toeic_part6();
+                }
+            }
+        });
+        layout_part7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag","part7");
+                part7_selector++;
+                if(part7_selector%2==1) {
+                    selectOperation(layout_part7);
+                    Global_Variable.set_global_toeic_part7();
+                }else{
+                    unselectedOperation(layout_part7);
+                    Global_Variable.set_global_toeic_part7();
+                }
+
             }
         });
 
-
-        BluetoothButton.setOnClickListener(new View.OnClickListener() {
+        bluetooth_switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tag","yoyo3");
+                Log.d("tag", "yoyo3");
                 startConnection();
 
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
+        settingButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.d("tag","yoyo4");
+
+                Intent intent = new Intent(toeicActivity.this,
+                        settingActivity.class);
+                Log.d("tag", "yoyo first finished");
+
+
+                startActivity(intent);
+            }
+        });
+
+        startButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Log.d("tag", "yoyo4");
 
+                sendDataToService(jsonArray.toString());
+
                 Intent intent = new Intent(toeicActivity.this,
-                        MainActivity.class);
+                        toeic_display_activity.class);
+                Log.d("tag", "yoyo first finished");
                 startActivity(intent);
+
             }
         });
 
-
     }
 
+    public void selectOperation(LinearLayout selectedButton) {
+        selectedButton.setBackgroundColor(Color.parseColor("#B2E2F0"));
+
+    }
+    public void unselectedOperation(LinearLayout selectedButton){
+        selectedButton.setBackgroundColor(Color.parseColor("#ddf2fa"));
+    }
 
     @Override
     protected void onDestroy() {
@@ -128,6 +244,7 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
      */
     private void startConnection(){
         if(isBound && mAccessoryService != null){
+            Log.d("blue", "startConnection now");
             mAccessoryService.findPeers();
         }
     }

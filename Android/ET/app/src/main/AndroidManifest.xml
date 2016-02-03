@@ -22,17 +22,27 @@
 
         <activity
             android:name=".category.toeicActivity"
-            android:label="토 익"
+            android:label="TOEIC"
             >
     </activity>
         <activity
             android:name=".category.opicActivity"
-            android:label="오 픽"
+            android:label="OPIC"
             >
         </activity>
         <activity
             android:name=".category.toeflActivity"
-            android:label="토 플"
+            android:label="TOEFL"
+            >
+        </activity>
+        <activity
+            android:name=".category.settingActivity"
+            android:label="Setting"
+            >
+        </activity>
+        <activity
+            android:name=".category.toeic_display_activity"
+            android:label="Start"
             >
         </activity>
         <service android:name=".service.AccessoryService" />
