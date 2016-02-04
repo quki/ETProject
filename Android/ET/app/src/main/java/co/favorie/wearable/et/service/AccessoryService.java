@@ -77,12 +77,15 @@ public class AccessoryService extends SAAgent {
             onPeerAgentFound(saPeerAgent);
         } else {
             Log.e(TAG, "onFindPeerAgentResponse : result = " + result);
+            Toast.makeText(getApplicationContext(), "기어와 패어링 해주세요", Toast.LENGTH_SHORT).show();
+            connectAction.onFailConnection();
         }
     }
 
 
     @Override
     protected void onServiceConnectionResponse(SAPeerAgent saPeerAgent, SASocket saSocket, int result) {
+
 
         if (result == SAAgent.CONNECTION_SUCCESS) {
 
@@ -111,7 +114,7 @@ public class AccessoryService extends SAAgent {
         } else if (result == SAAgent.CONNECTION_FAILURE_PEERAGENT_NO_RESPONSE) {
             Toast.makeText(getApplicationContext(), "기어측 어플로부터 응답이 없습니다.", Toast.LENGTH_SHORT).show();
             connectAction.onFailConnection();
-            Log.w(TAG, "CONNECTION_FAILURE_PEERAGENT_NO_RESPONSE");
+            Log.e(TAG, "CONNECTION_FAILURE_PEERAGENT_NO_RESPONSE");
         }
     }
 

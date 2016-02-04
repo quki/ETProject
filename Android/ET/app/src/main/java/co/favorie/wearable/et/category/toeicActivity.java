@@ -1,5 +1,6 @@
 package co.favorie.wearable.et.category;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -9,9 +10,7 @@ import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.bluetooth.BluetoothAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -22,11 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
-import co.favorie.wearable.et.MainActivity;
 import co.favorie.wearable.et.R;
 import co.favorie.wearable.et.action.ConnectAction;
 import co.favorie.wearable.et.bluetooth.BluetoothConfig;
@@ -36,7 +30,6 @@ import co.favorie.wearable.et.service.AccessoryService;
 /**
  * Created by Yohan on 2016-02-01.
  */
-
 
 
 public class toeicActivity extends AppCompatActivity  implements BluetoothConnection {
@@ -55,15 +48,13 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
     private LinearLayout layout_part5;
     private LinearLayout layout_part6;
     private LinearLayout layout_part7;
-    private String JsonData="";
+
+
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("tag", "yoyo5");
         super.onCreate(savedInstanceState);
-        Log.d("tag", "yoyo6");
         setContentView(R.layout.layout_toeic);
         initBluetoothConnection();
         bindAccessoryService();
-        Log.d("tag", "yoyo7");
         settingButton= (ImageButton)findViewById(R.id.toeic_setting);
         part5_text = (TextView)findViewById(R.id.toeic_part5);
         part6_text = (TextView)findViewById(R.id.toeic_part6);
@@ -77,14 +68,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         part5_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part5()+"min")));
         part6_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part6()+"min")));
         part7_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part7() + "min")));
-
-
-        JsonData = "[ {'title' : 'TOEIC PART5' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part5()*60*1000)  + "}," +
-                  " {'title' : 'TOEIC PART6' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part6()*60*1000)   + "},"  +
-                " {'title' : 'TOEIC PART7' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*1000)   + "}"  +
-                "]" ;
-
-
 
         JSONObject obj1 = new JSONObject();
         JSONObject obj2 = new JSONObject();
@@ -100,28 +83,18 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             obj3.put("title","TOEIC PART7");
             obj3.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*100));
             jsonArray.put(obj3);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
-
-
-
-
-
-
-
         layout_part5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tag", "part5");
-
                 part5_selector++;
                 if (part5_selector % 2 == 1) {
                     selectOperation(layout_part5);
                     Global_Variable.set_global_toeic_part5();
+
                 } else {
                     unselectedOperation(layout_part5);
                     Global_Variable.set_global_toeic_part5();
@@ -131,7 +104,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         layout_part6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tag","part6");
                 part6_selector++;
                 if(part6_selector%2==1) {
                     selectOperation(layout_part6);
@@ -145,7 +117,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         layout_part7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tag","part7");
                 part7_selector++;
                 if(part7_selector%2==1) {
                     selectOperation(layout_part7);
@@ -158,10 +129,10 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             }
         });
 
-        bluetooth_switch.setOnClickListener(new View.OnClickListener() {
+        bluetooth_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Log.d("tag", "yoyo3");
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 startConnection();
 
             }
@@ -171,13 +142,9 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
             @Override
             public void onClick(View v) {
-                Log.d("tag","yoyo4");
 
                 Intent intent = new Intent(toeicActivity.this,
                         settingActivity.class);
-                Log.d("tag", "yoyo first finished");
-
-
                 startActivity(intent);
             }
         });
@@ -186,13 +153,11 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
             @Override
             public void onClick(View v) {
-                Log.d("tag", "yoyo4");
 
                 sendDataToService(jsonArray.toString());
 
                 Intent intent = new Intent(toeicActivity.this,
                         toeic_display_activity.class);
-                Log.d("tag", "yoyo first finished");
                 startActivity(intent);
 
             }
@@ -202,7 +167,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
     public void selectOperation(LinearLayout selectedButton) {
         selectedButton.setBackgroundColor(Color.parseColor("#B2E2F0"));
-
     }
     public void unselectedOperation(LinearLayout selectedButton){
         selectedButton.setBackgroundColor(Color.parseColor("#ddf2fa"));
@@ -281,7 +245,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             mAccessoryService = ((AccessoryService.MyBinder) service).getService();
             mAccessoryService.registerAction(getAction());
             isBound = true;
-            Toast.makeText(getApplicationContext(),"onSERVICECONNECTED",Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -297,8 +260,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
     }
 
-
-
     private ConnectAction getAction(){
         return new ConnectAction() {
             @Override
@@ -313,10 +274,11 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
             @Override
             public void onFailConnection() {
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(),"FAIL TO SERVICE CONNECTION",Toast.LENGTH_SHORT).show();
+                        bluetooth_switch.setChecked(false);
                     }
                 });
             }
