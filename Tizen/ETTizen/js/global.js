@@ -32,18 +32,14 @@
 /*var timeSet = 900000;*/
 
 var gIndex = 0;
-
-var titleTest = 'TOIEC part 5'
-var timeSet = 12000;
-
-var json = [
-            {'title':'TOEIC part 1','time':12000},
-            {'title':'TOEIC part 2','time':17000}
-           ]
+var examList= [
+            {'title':'ET','time':15*1000}
+           ];
 
 var SAAgent,
     SASocket,
     connectionListener,
+    examTitle = document.getElementById('exam-title'),
     responseTxt = document.getElementById("responseTxt");
 
 /* Make Provider application running in background */
@@ -64,12 +60,10 @@ connectionListener = {
         /* Check connecting peer by appName*/
         if (peerAgent.appName === "ET") {
             SAAgent.acceptServiceConnectionRequest(peerAgent);
-            createHTML("허락!");
-
+            console.log("허락!");
         } else {
             SAAgent.rejectServiceConnectionRequest(peerAgent);
-            createHTML("거절!");
-
+            console.log("거절!");
         }
     },
 
@@ -78,13 +72,13 @@ connectionListener = {
         var onConnectionLost,
             dataOnReceive;
 
-        createHTML("Service connection established");
+        console.log("Service connection established");
 
         /* Obtaining socket */
         SASocket = socket;
 
         onConnectionLost = function onConnectionLost (reason) {
-            createHTML("Service Connection disconnected due to following reason:<br />" + reason);
+            console.error("Service Connection disconnected due to following reason: " + reason);
         };
 
         /* Inform when connection would get lost */
@@ -92,22 +86,24 @@ connectionListener = {
 
         dataOnReceive =  function dataOnReceive (channelId, data) {
             var newData ="Hello Android";
-
             if (!SAAgent.channelIds[0]) {
-                createHTML("Something goes wrong...NO CHANNEL ID!");
+            	console.error("Something goes wrong...NO CHANNEL ID!");
                 return;
             }
-
+            examList = JSON.parse(data);  
+            for(var i = 0; i<examList.length ; i++){
+            	console.log(examList[i].title+" : "+examList[i].time);
+            }
+            examTitle.innerText = examList[0].title;
             /* Send new data to Consumer */
             SASocket.sendData(SAAgent.channelIds[0], newData);
-            createHTML(data);
         };
 
         /* Set listener for incoming data from Consumer */
         SASocket.setDataReceiveListener(dataOnReceive);
     },
     onerror: function (errorCode) {
-        createHTML("Service connection error<br />errorCode: " + errorCode);
+        console.error("Service connection error : " + errorCode);
     }
 };
 
@@ -116,8 +112,8 @@ function requestOnSuccess (agents) {
 
     for (i; i < agents.length; i += 1) {
         if (agents[i].role === "PROVIDER") {
-            createHTML("Service Provider found!<br />" +
-                        "Name: " +  agents[i].name);
+        	console.log("Service Provider found!" +
+                    "Name: " +  agents[i].name);
             SAAgent = agents[i];
             break;
         }
@@ -128,9 +124,9 @@ function requestOnSuccess (agents) {
 };
 
 function requestOnError (e) {
-    createHTML("requestSAAgent Error" +
-                "Error name : " + e.name + "<br />" +
-                "Error message : " + e.message);
+    cosole.error("requestSAAgent Error" +
+                " Error name : " + e.name +
+                " Error message : " + e.message);
 };
 
 /* Requests the SAAgent specified in the Accessory Service Profile */

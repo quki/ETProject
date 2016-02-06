@@ -125,9 +125,7 @@ define({
             digits = document.querySelectorAll('.digit[id]'),
             
             isCircle = tau.support.shape.circle,
-        
-            title = document.getElementById('test-title'),
-        
+
             /**
              * time out ? true : false;
              */
@@ -146,7 +144,7 @@ define({
          * @param {string} status Status can be ready, paused, running.
          */
         function showButtons(status) {
-        	title.innerText = json[gIndex].title;
+        	examTitle.innerText = examList[gIndex].title;
             var buttons = document.getElementsByClassName('stopwatch-btn'),
                 buttonsElementsCount = buttons.length - 1,
                 i = 0;
@@ -170,7 +168,15 @@ define({
          */
         function redrawCanvas(ts) {
         	
-        	var ratio = ts/json[gIndex].time;
+        	var ratio = ts/examList[gIndex].time;
+        	if(ratio>0.9 && ratio<1 ){
+        		roundProgressCanvasContext.strokeStyle = 'rgb(240, 27, 0)';
+        	}else if(ratio>0.8 && ratio<0.9){
+        		roundProgressCanvasContext.strokeStyle = 'rgb(255,185,0)';
+        	}else{
+        		roundProgressCanvasContext.strokeStyle = 'rgb(0, 195, 113)';
+        	}
+        	
             roundProgressCanvasContext.clearRect(0, 0, 360, 360); // start x, start y, width, height
             roundProgressCanvasContext.beginPath();
             // x1, y1, r, start angle, end angle
@@ -204,7 +210,7 @@ define({
                     time = new Time(elapsedTimestamp)
                     if(time.length == 0){
                     	console.log('stop');
-                    	json.length > gIndex+1 ? (gIndex += 1) : (gIndex = 0);
+                    	examList.length > gIndex+1 ? (gIndex += 1) : (gIndex = 0);
                     	timer.reset();
                     	timer.run();
                     	showButtons();
@@ -218,7 +224,7 @@ define({
                         digits[i].innerText = time[i];
                     }
 
-                    var progressElapsed = json[gIndex].time - elapsedTimestamp;
+                    var progressElapsed = examList[gIndex].time - elapsedTimestamp;
                     redrawCanvas(progressElapsed);
                 return time;
         }
@@ -309,9 +315,9 @@ define({
 		      if (direction === "CW") 
 		      {
 		         /* Right direction */
-		    	  console.log('right');
 		    	  navigator.vibrate(100);
-		    	  json.length > gIndex+1 ? (gIndex+=1) : (gIndex=0);
+		    	  examList.length > gIndex+1 ? (gIndex+=1) : (gIndex=0);
+		    	  console.log(gIndex);
 		    	  timer.reset();
 		    	  timer.run();
 		    	  showButtons();
@@ -320,9 +326,9 @@ define({
 		      else if (direction === "CCW") 
 		      {
 		         /* Left direction */
-		    	  console.log('left');
 		    	  navigator.vibrate(100);
 		    	  gIndex != 0 ? (gIndex-=1) : (gIndex=0);
+		    	  console.log(gIndex);
 		    	  timer.reset();
 		    	  timer.run();
 		    	  showButtons();
@@ -387,7 +393,6 @@ define({
         	console.log('initCanvas()');
             roundProgressCanvasContext = roundProgressCanvas.getContext('2d');
             roundProgressCanvasContext.strokeStyle = 'rgb(0, 195, 113)';
-            title.innerText = json[0].title;
             roundProgressCanvasContext.lineWidth = 180;
         }
 
