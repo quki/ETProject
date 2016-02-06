@@ -61,6 +61,9 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         super.onCreate(savedInstanceState);
         Log.d("tag", "yoyo6");
         setContentView(R.layout.layout_toeic);
+        Global_Variable.global_toeic_part5 = false;
+        Global_Variable.global_toeic_part6 = false;
+        Global_Variable.global_toeic_part7 = false;
         initBluetoothConnection();
         bindAccessoryService();
         Log.d("tag", "yoyo7");
@@ -77,12 +80,6 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         part5_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part5()+"min")));
         part6_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part6()+"min")));
         part7_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part7() + "min")));
-
-
-        JsonData = "[ {'title' : 'TOEIC PART5' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part5()*60*1000)  + "}," +
-                  " {'title' : 'TOEIC PART6' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part6()*60*1000)   + "},"  +
-                " {'title' : 'TOEIC PART7' , 'time': "  +String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*1000)   + "}"  +
-                "]" ;
 
 
 

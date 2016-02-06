@@ -83,7 +83,7 @@
                 android:layout_height="60dp"
                 android:layout_marginLeft="40dp"
                 android:gravity="center"
-                android:hint ="45"
+                android:hint ="0"
                 android:textSize="20dp"
                 android:background="@color/number_two"
                 android:textAlignment="center"/>
