@@ -15,6 +15,10 @@ public  class Global_Variable {
     public static int gloval_toeic_part5 =15;
     public static int gloval_toeic_part6 =10;
     public static int gloval_toeic_part7 =50;
+    public static int gloval_toeic_part5_sec =0;
+    public static int gloval_toeic_part6_sec =0;
+    public static int gloval_toeic_part7_sec =0;
+
     public  Global_Variable(){}
     static boolean  get_global_toeic_part5(){
         return global_toeic_part5;
@@ -28,7 +32,9 @@ public  class Global_Variable {
     static int get_gloval_toeic_part5() { return gloval_toeic_part5; }
     static int get_gloval_toeic_part6() { return gloval_toeic_part6; }
     static int get_gloval_toeic_part7() { return gloval_toeic_part7; }
-
+    static int get_gloval_toeic_part5_sec(){return gloval_toeic_part5_sec;}
+    static int get_gloval_toeic_part6_sec(){return gloval_toeic_part6_sec;}
+    static int get_gloval_toeic_part7_sec(){return gloval_toeic_part7_sec;}
 
 
 
@@ -54,17 +60,23 @@ public  class Global_Variable {
         }
     }
 
-    static void set_gloval_toeic_part5(int part ){
-        gloval_toeic_part5 = part;
+    static void set_gloval_toeic_part5(int part1, int part2 ){
+        gloval_toeic_part5 = part1;
+        gloval_toeic_part5_sec = part2;
 
     }
-    static void set_gloval_toeic_part6(int part ){
-        gloval_toeic_part6 = part;
+    static void set_gloval_toeic_part6(int part1, int part2 ){
+        gloval_toeic_part6 = part1;
+        gloval_toeic_part6_sec = part2;
 
     }
-    static void set_gloval_toeic_part7(int part ){
-        gloval_toeic_part7 = part;
+    static void set_gloval_toeic_part7(int part1, int part2){
+        gloval_toeic_part7 = part1;
+        gloval_toeic_part7_sec = part2;
 
     }
+    static void reset_gloval_toeic_part5(){gloval_toeic_part5 =15; gloval_toeic_part5_sec =0;}
+    static void reset_gloval_toeic_part6(){gloval_toeic_part6 =10; gloval_toeic_part6_sec =0;}
+    static void reset_gloval_toeic_part7(){gloval_toeic_part7 =50; gloval_toeic_part7_sec =0;}
 
 }

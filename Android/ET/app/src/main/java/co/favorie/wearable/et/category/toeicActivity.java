@@ -72,11 +72,11 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         part6_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part6()+"min")));
         part7_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part7() + "min")));
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 
-=======
->>>>>>> 2e3f783358a417e0df1eee74f442c8233c7106c0
+//=======
+//>>>>>>> 2e3f783358a417e0df1eee74f442c8233c7106c0
         JSONObject obj1 = new JSONObject();
         JSONObject obj2 = new JSONObject();
         JSONObject obj3 = new JSONObject();
@@ -162,7 +162,7 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             @Override
             public void onClick(View v) {
 
-                sendDataToService(jsonArray.toString());
+               // sendDataToService(jsonArray.toString());
 
                 Intent intent = new Intent(toeicActivity.this,
                         toeic_display_activity.class);
