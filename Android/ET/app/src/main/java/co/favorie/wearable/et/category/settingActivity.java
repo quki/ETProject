@@ -35,7 +35,8 @@ public class settingActivity extends AppCompatActivity {
         setContentView(R.layout.layout_toeic_setting);
         Log.d("tag", "yoyo7");
 
-        toeic_setting_button = (ImageButton)findViewById(R.id.toeic_setting_reset);
+
+        toeic_setting_button = (ImageButton)findViewById(R.id.toeic_setting_save);
         toeic_reset_button = (ImageButton)findViewById(R.id.toeic_setting_reset);
         part5_min_toeic = (EditText)findViewById(R.id.part5_min_toeic);
         part5_sec_toeic = (EditText)findViewById(R.id.part5_sec_toeic);
@@ -51,14 +52,17 @@ public class settingActivity extends AppCompatActivity {
         part6_sec_toeic.setText((String.valueOf(Global_Variable.get_gloval_toeic_part6_sec())));
         part7_sec_toeic.setText((String.valueOf(Global_Variable.get_gloval_toeic_part7_sec())));
 
-
+        Log.d("testing", part5_min_toeic.getText().toString());
         toeic_setting_button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Global_Variable.set_gloval_toeic_part5(Integer.getInteger(part5_min_toeic.getText().toString()),Integer.getInteger(part5_sec_toeic.getText().toString()));
-                Global_Variable.set_gloval_toeic_part5(Integer.getInteger(part6_min_toeic.getText().toString()), Integer.getInteger(part6_sec_toeic.getText().toString()));
-                Global_Variable.set_gloval_toeic_part5(Integer.getInteger(part7_min_toeic.getText().toString()), Integer.getInteger(part7_sec_toeic.getText().toString()));
-
+                Global_Variable.set_gloval_toeic_part5(Integer.parseInt(part5_min_toeic.getText().toString()), Integer.parseInt(part5_sec_toeic.getText().toString()));
+                Global_Variable.set_gloval_toeic_part6(Integer.parseInt(part6_min_toeic.getText().toString()), Integer.parseInt(part6_sec_toeic.getText().toString()));
+                Global_Variable.set_gloval_toeic_part7(Integer.parseInt(part7_min_toeic.getText().toString()), Integer.parseInt(part7_sec_toeic.getText().toString()));
+                Log.d("testing3","int"+Global_Variable.get_global_toeic_part5()+"value");
+                setResult(RESULT_OK, null);
+                finish();
 
             }
         });

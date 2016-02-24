@@ -48,6 +48,7 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
     private LinearLayout layout_part5;
     private LinearLayout layout_part6;
     private LinearLayout layout_part7;
+    private boolean isconnect =false;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,10 +127,10 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             @Override
             public void onClick(View v) {
                 part7_selector++;
-                if(part7_selector%2==1) {
+                if (part7_selector % 2 == 1) {
                     selectOperation(layout_part7);
                     Global_Variable.set_global_toeic_part7();
-                }else{
+                } else {
                     unselectedOperation(layout_part7);
                     Global_Variable.set_global_toeic_part7();
                 }
@@ -141,10 +142,21 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                startConnection();
+                if (isChecked) {
+                    initBluetoothConnection();
+                    bindAccessoryService();
+                    isconnect = true;
+                    startConnection();
+                }else{
+                    isconnect = false;
+                    unbindAccessoryService();
+                }
 
             }
         });
+
+
+
 
         settingButton.setOnClickListener(new View.OnClickListener() {
 
@@ -153,7 +165,12 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
                 Intent intent = new Intent(toeicActivity.this,
                         settingActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
+
+                Log.d("testing2","wow");
+                part5_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part5()+"min")));
+                part6_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part6()+"min")));
+                part7_text.setText((String.valueOf(Global_Variable.get_gloval_toeic_part7()+"min")));
             }
         });
 
@@ -161,9 +178,9 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
 
             @Override
             public void onClick(View v) {
-
-               // sendDataToService(jsonArray.toString());
-
+                if(isconnect != false) {
+                    sendDataToService(jsonArray.toString());
+                }
                 Intent intent = new Intent(toeicActivity.this,
                         toeic_display_activity.class);
                 startActivity(intent);
@@ -234,6 +251,9 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         }
     }
 
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == BluetoothConfig.REQUEST_ENABLE_BT) {
@@ -244,6 +264,17 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
                 finish();
             }
         }
+
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            Intent refresh = new Intent(this, toeicActivity.class);
+            startActivity(refresh);
+            this.finish();
+        }
+
+
+
     }
 
     ServiceConnection mServiceConnection = new ServiceConnection() {
