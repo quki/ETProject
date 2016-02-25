@@ -28,7 +28,7 @@
 </Reference>
 <Reference URI="icon.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>vPjxjOppORd6hn9Bw4sh06gqtDoJzoFbV/8e9FyIdvk=</DigestValue>
+<DigestValue>VhelLqFeoQBdijzLTHCU2GoDWugfHwoJmLn/vctUmfU=</DigestValue>
 </Reference>
 <Reference URI="img%2Fg_stopwatch%2Fb_running_progress_bg_masking.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -1159,11 +1159,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-Ys0ZyaVg5T7s5F1EI79T8U0HeDYmHPXVgFMLblz8HYtVz6QEPOm5Gqodf0xJISqFA6LgPbyA5/uZ
-UDSPhJoDRCNryLHywgecV5zdncVUM596OlnzxJKC3135lHilhODZB2ck4ovan1gS44N6wYHWTigw
-aLRi9MnFciCrIfIzfB1qgUSOKN7U6cY7wr5wf75X08emq+XXJXYrJP2qhXiW/jdBW6gMycnw99rr
-E7vRzhyKZd+9vn6A0qy74rvSU+i/yqsrdAZPdAncMiWzOtHvudioCtGKVkPZY9fUmg37PlRW+yLB
-xHJv2V7VdnGXFt1MIo6weGuSoP6oydmIUPAtqg==
+RO/mgBb+lD7GooR28FRfIQ4qi0LDWSexT/xcSMAyyUSUdKAfBCJXLhDTYEmNr3EfNa259iAhUyYv
+grXvEkXcTAvZAwhzIHy9hG+pBkwK3APZW0SpbvCbuV7PYSV7t4orCvKArhOMBe7bS1+r9nNE+Msc
+7rAJ/ZzAv1zXCy1I8f6vXcKRouCtCMcmlGVTChITmQkO5w1YDvf823dSogsmR7MvmHpAmQ1s4OSZ
+DPbfJukLehq8+uclTy8AuStl0dHq0ZJojjVZThppEpXv0w0lpyvcXFzJaDvVuuulmBdl4kuVzmlq
+mOROPsUucSbip4o75Hy+GozVRSCRuSDNWzSVYA==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

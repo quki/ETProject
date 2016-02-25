@@ -1,7 +1,6 @@
 #delete
+res/wgt/ETTizen.wgt
 #add
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/css\style.css
-res/wgt/js\views\stopWatchPage.js
