@@ -2,6 +2,7 @@ package co.favorie.wearable.et;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.nfc.Tag;
@@ -29,7 +30,7 @@ import co.favorie.wearable.et.service.AccessoryService;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button toeicBtn,toeflBtn,opicBtn;
+    private Button toeicBtn,toeflBtn,opicBtn,customBtn;
 
 
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         toeicBtn = (Button)findViewById(R.id.toeic);
         toeflBtn = (Button)findViewById(R.id.toefl);
         opicBtn = (Button)findViewById(R.id.opic);
+        customBtn = (Button)findViewById(R.id.customs);
 
         toeicBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -80,18 +82,23 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Log.d("tag","yoyo4");
 
-                Intent intent = new Intent(MainActivity.this,
-                        toeflActivity.class);
-                Log.d("tag", "yoyo first finished");
+                Toast.makeText( MainActivity.this , "Comming Soon",Toast.LENGTH_SHORT ).show();
 
-
-                startActivity(intent);
             }
         });
 
 
+
+        customBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText( MainActivity.this , "Comming Soon",Toast.LENGTH_SHORT ).show();
+
+
+            }
+        });
     }
 
 

@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import co.favorie.wearable.et.MainActivity;
@@ -23,65 +25,60 @@ import co.favorie.wearable.et.service.AccessoryService;
  * Created by Yohan on 2016-02-01.
  */
 public class opicActivity extends AppCompatActivity {
-    private Button settingButton;
-    private Button backButton;
-    private EditText opic_text;
-
+    private ImageButton settingButton;
+    private ImageButton startButton;
+    private TextView opic_time_display;
+    private TextView opic_prepare_display;
+    private EditText opic_num_display;
     public AccessoryService mAccessoryService = new AccessoryService();
     private boolean isBound;
     private Button BluetoothButton;
 
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("tag", "yoyo5");
         super.onCreate(savedInstanceState);
-        Log.d("tag", "yoyo6");
         setContentView(R.layout.layout_opic);
+        Log.d("testing2", "wow1");
         initBluetoothConnection();
         bindAccessoryService();
-        Log.d("tag", "yoyo7");
-        settingButton= (Button)findViewById(R.id.submit_opic);
-        BluetoothButton= (Button)findViewById(R.id.bluetooth_opic);
-        backButton=(Button)findViewById(R.id.back_opic);
-        opic_text = (EditText)findViewById(R.id.opic_time);
-
-
-        // if(getIntent().hasExtra("wow")) {
-
-        //  }
-
-
-
+        settingButton= (ImageButton)findViewById(R.id.opic_setting);
+       // BluetoothButton= (ImageButton)findViewById(R.id.bluetooth_opic);
+       // backButton=(Button)findViewById(R.id.back_opic);
+        //opic_text = (EditText)findViewById(R.id.op);
+        opic_time_display = (TextView)findViewById(R.id.opic_time_display);
+        opic_prepare_display = (TextView)findViewById(R.id.opic_prepare_display);
+        opic_num_display = (EditText)findViewById(R.id.practice_num_opic);
+        startButton = (ImageButton) findViewById(R.id.opic_start_please);
+        opic_num_display.setText((String.valueOf(Global_Variable.get_gloval_opic_num())));
         settingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String data =  opic_text.getText().toString();
-                sendDataToService(data);
-            }
-        });
-
-
-        BluetoothButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("tag","yoyo3");
-                startConnection();
-
-            }
-        });
-
-        backButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Log.d("tag", "yoyo4");
 
                 Intent intent = new Intent(opicActivity.this,
-                        MainActivity.class);
-                startActivity(intent);
+                        opic_settingActivity.class);
+                startActivityForResult(intent, 1);
+
+                Log.d("testing2","wow");
+                opic_prepare_display.setText((String.valueOf(Global_Variable.get_gloval_opic_speaking_prepare()+"sec")));
+                opic_time_display.setText((String.valueOf(Global_Variable.get_gloval_opic_speaking_min() + "min" + Global_Variable.get_gloval_opic_speaking_sec() + "sec")));
+
             }
         });
 
 
+        startButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                // sendDataToService(jsonArray.toString());
+
+                Intent intent = new Intent(opicActivity.this,
+                        opic_display_activity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
 

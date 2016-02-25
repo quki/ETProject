@@ -50,7 +50,7 @@
             android:background="@color/number_four"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:text="T O E I C"
+            android:text="O P I C"
             android:textColor="@color/black"
             android:textSize="22dp"
 
@@ -70,10 +70,9 @@
             android:width="200dp"
             android:height="5dp"
             android:background="@color/number_six"
-            android:minHeight="34dp"
+            android:minHeight="20dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:text="Reading Comprehension"
             android:textColor="@color/black"
             android:textSize="15dp"
 
@@ -97,14 +96,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:text = "Part5"
+            android:text = "준비 시간"
             android:textSize ="18dp"
             android:textColor="@color/black"
             />
         <EditText
-            android:id="@+id/part5_min_toeic"
+            android:id="@+id/opic_prepare_time_setting"
             android:layout_marginLeft="50dp"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
@@ -118,30 +117,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="5dp"
-            android:text = "min"
-            android:textSize ="15dp"
-            android:textColor="@color/black"
-            />
-        <EditText
-            android:id="@+id/part5_sec_toeic"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/number_three"
-            android:height="58dp"
-            android:width="58dp"
-            android:textAlignment="center"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
             android:text = "sec"
             android:textSize ="15dp"
             android:textColor="@color/black"
             />
+
     </LinearLayout>
 
     <LinearLayout
@@ -162,81 +142,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:text = "Part6"
+            android:text = "응답 시간"
             android:textSize ="18dp"
             android:textColor="@color/black"
             />
         <EditText
-            android:id="@+id/part6_min_toeic"
-            android:layout_marginLeft="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/number_three"
-            android:height="58dp"
-            android:width="58dp"
-            android:textAlignment="center"
-
-
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
-            android:text = "min"
-            android:textSize ="15dp"
-            android:textColor="@color/black"
-            />
-        <EditText
-            android:id="@+id/part6_sec_toeic"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/number_three"
-            android:height="58dp"
-            android:width="58dp"
-            android:textAlignment="center"
-
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
-            android:text = "sec"
-            android:textSize ="15dp"
-            android:textColor="@color/black"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/number_two"
-        android:paddingTop="5dp"
-        android:minHeight="68dp"
-
-        >
-
-
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:id="@+id/min_opic"
             android:layout_marginLeft="20dp"
-            android:text = "Part7"
-            android:textSize ="18dp"
-            android:textColor="@color/black"
-            />
-        <EditText
-            android:id="@+id/part7_min_toeic"
-            android:layout_marginLeft="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -257,7 +169,7 @@
             android:textColor="@color/black"
             />
         <EditText
-            android:id="@+id/part7_sec_toeic"
+            android:id="@+id/sec_opic"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -278,6 +190,8 @@
             android:textColor="@color/black"
             />
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="40dp"
@@ -298,7 +212,7 @@
 
 
         <ImageButton
-            android:id="@+id/toeic_setting_reset"
+            android:id="@+id/opic_setting_reset"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
@@ -315,7 +229,7 @@
 
 
         <ImageButton
-            android:id="@+id/toeic_setting_save"
+            android:id="@+id/opic_setting_save"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:background="@drawable/rounded_button_setting"

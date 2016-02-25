@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.favorie.wearable.et">
 
+    <uses-permission android:name = "android.permission.VIBRATE"/>
     <uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="com.samsung.accessory.permission.ACCESSORY_FRAMEWORK" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icons"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,7 +25,7 @@
             android:name=".category.toeicActivity"
             android:label="TOEIC"
             >
-    </activity>
+    </activity>le
         <activity
             android:name=".category.opicActivity"
             android:label="OPIC"
@@ -42,6 +43,16 @@
         </activity>
         <activity
             android:name=".category.toeic_display_activity"
+            android:label="Start"
+            >
+        </activity>
+        <activity
+            android:name=".category.opic_settingActivity"
+            android:label="Setting"
+            >
+        </activity>
+        <activity
+            android:name=".category.opic_display_activity"
             android:label="Start"
             >
         </activity>

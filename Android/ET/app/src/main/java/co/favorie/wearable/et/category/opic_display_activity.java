@@ -13,71 +13,34 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.concurrent.TimeUnit;
 
 import co.favorie.wearable.et.R;
 
 /**
- *
- *
- * Created by Yohan on 2016-02-02.
+ * Created by Yohan on 2016-02-23.
  */
+public class opic_display_activity extends AppCompatActivity {
 
 
-
-@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-@SuppressLint("NewApi")
-
-public class toeic_display_activity extends AppCompatActivity {
-
-    private Button toeic_part5;
-    private Button toeic_part6;
-    private Button toeic_part7;
     private TextView time_text;
-    private int timeset_part5 = Integer.parseInt((String.valueOf(Global_Variable.get_gloval_toeic_part5())))*60 + Integer.parseInt(String.valueOf(Global_Variable.get_gloval_toeic_part5_sec()));
-    private int timeset_part6 = Integer.parseInt((String.valueOf(Global_Variable.get_gloval_toeic_part6())))*60 + Integer.parseInt(String.valueOf(Global_Variable.get_gloval_toeic_part6_sec()));
-    private int timeset_part7 = Integer.parseInt((String.valueOf(Global_Variable.get_gloval_toeic_part7())))*60 + Integer.parseInt(String.valueOf(Global_Variable.get_gloval_toeic_part7_sec()));
-    private int total_time =0;
+    private int total_time;
+    private int each_time = Integer.parseInt((String.valueOf(Global_Variable.get_gloval_opic_speaking_min())))*60 + Integer.parseInt(String.valueOf(Global_Variable.get_gloval_opic_speaking_sec())+Integer.parseInt(String.valueOf(Global_Variable.get_gloval_opic_speaking_prepare())));
+    private int num_of_problem = Integer.parseInt((String.valueOf(Global_Variable.get_gloval_opic_num())));
+
+
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
-        Log.d("tag", "yoyo5");
         super.onCreate(savedInstanceState);
-        Log.d("tag", "yoyo6");
-        setContentView(R.layout.layout_toeic_start);
-        Log.d("tag", "yoyo7");
+        setContentView(R.layout.layout_opic_start);
+        time_text = (TextView)findViewById(R.id.time_display_opic);
 
-
-        toeic_part5  = (Button)findViewById(R.id.toeic_display_part5);
-        toeic_part6= (Button)findViewById(R.id.toeic_display_part6);
-        toeic_part7  = (Button)findViewById(R.id.toeic_display_part7);
-        time_text = (TextView)findViewById(R.id.time_display_toeic);
-
-
-
-        if(Global_Variable.get_global_toeic_part5()== true) {
-            toeic_part5.setBackgroundColor(Color.parseColor("#B2E2F0"));
-            total_time +=timeset_part5;
-
-        }
-        if(Global_Variable.get_global_toeic_part6()== true) {
-            toeic_part6.setBackgroundColor(Color.parseColor("#B2E2F0"));
-            total_time+= timeset_part6;
-
-        }
-        if(Global_Variable.get_global_toeic_part7()== true) {
-            toeic_part7.setBackgroundColor(Color.parseColor("#B2E2F0"));
-            total_time+=timeset_part7;
-        }
-
+        total_time +=each_time*num_of_problem;
 
         final CounterClass timer = new CounterClass(total_time*1000, 1000);
         timer.start();
 
-}
+    }
 
 
     public class CounterClass extends CountDownTimer {
@@ -121,3 +84,5 @@ public class toeic_display_activity extends AppCompatActivity {
 
     }
 }
+
+
