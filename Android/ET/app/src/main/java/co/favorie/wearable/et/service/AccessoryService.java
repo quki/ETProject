@@ -115,6 +115,8 @@ public class AccessoryService extends SAAgent {
             Toast.makeText(getApplicationContext(), "기어측 어플로부터 응답이 없습니다.", Toast.LENGTH_SHORT).show();
             connectAction.onFailConnection();
             Log.e(TAG, "CONNECTION_FAILURE_PEERAGENT_NO_RESPONSE");
+        }else{
+            connectAction.onFailConnection();
         }
     }
 

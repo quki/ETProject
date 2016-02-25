@@ -84,13 +84,13 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
         final JSONArray jsonArray = new JSONArray();
         try {
             obj1.put("title","TOEIC PART5");
-            obj1.put("time", String.valueOf(Global_Variable.get_gloval_toeic_part5()*60*100));
+            obj1.put("time", String.valueOf(Global_Variable.get_gloval_toeic_part5()*60*1000));
             jsonArray.put(obj1);
             obj2.put("title","TOEIC PART6");
-            obj2.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part6()*60*100));
+            obj2.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part6()*60*1000));
             jsonArray.put(obj2);
             obj3.put("title","TOEIC PART7");
-            obj3.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*100));
+            obj3.put("time",String.valueOf(Global_Variable.get_gloval_toeic_part7()*60*1000));
             jsonArray.put(obj3);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -149,7 +149,7 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
                     startConnection();
                 }else{
                     isconnect = false;
-                    unbindAccessoryService();
+                    //unbindAccessoryService();
                 }
 
             }
@@ -325,11 +325,11 @@ public class toeicActivity extends AppCompatActivity  implements BluetoothConnec
             @Override
             public void onSuccessTransfer(final String data) {
                 //runOnUiThread(new Runnable() {
-                  //  @Override
+                //  @Override
                 //    public void run() {
-                 //       statusTxtView.setText(data);
-                 //   }
-              //  });
+                //       statusTxtView.setText(data);
+                //   }
+                //  });
             }
         };
     }
